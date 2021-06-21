@@ -1,6 +1,7 @@
 package com.nextline.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * @author Luis
  */
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -26,4 +28,9 @@ public class User implements Serializable {
     @Column(name = "nickName", nullable = false)
     private String nickName;
 
+
+
+    public User(Integer id) {
+        this.id = id;
+    }
 }

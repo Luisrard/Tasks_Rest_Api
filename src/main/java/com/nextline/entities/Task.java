@@ -43,17 +43,19 @@ public class Task implements Serializable {
     @Column(name = "deathLine", nullable = false)
     private LocalDate deathLine;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idUser", nullable = false)
-    private User idUser;
+    @Column(name = "idUser", nullable = false)
+    private Integer idUser;
+
+    @Column(name = "mandated")
+    private String mandated;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "task")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "task", cascade = CascadeType.ALL)
     private List<Tag> tags;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "task")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "task", cascade = CascadeType.ALL)
     private List<Comment> comments;
 }
